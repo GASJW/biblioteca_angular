@@ -2,19 +2,43 @@
 <form class="w3-container">
   <div>
     <label>Nome</label
-    ><input type="text" id="txtNome" class="w3-input w3-border w3-round" />
+    ><input
+      type="text"
+      id="txtNome"
+      name="nome"
+      class="w3-input w3-border w3-round"
+      [(ngModel)]="Funcionario.Nome"
+    />
   </div>
   <div>
     <label>Sobrenome</label
-    ><input type="text" id="txtSobrenome" class="w3-input w3-border w3-round" />
+    ><input
+      type="text"
+      id="txtSobrenome"
+      name="sobrenome"
+      class="w3-input w3-border w3-round"
+      [(ngModel)]="Funcionario.Sobrenome"
+    />
   </div>
   <div>
     <label>Cargo</label
-    ><input type="text" id="txtCargo" class="w3-input w3-border w3-round" />
+    ><input
+      type="text"
+      id="txtCargo"
+      name="cargo"
+      class="w3-input w3-border w3-round"
+      [(ngModel)]="Funcionario.Cargo"
+    />
   </div>
   <div>
     <label>Idade</label
-    ><input type="text" id="txtIdade" class="w3-input w3-border w3-round" />
+    ><input
+      type="text"
+      id="txtIdade"
+      name="idade"
+      class="w3-input w3-border w3-round"
+      [(ngModel)]="Funcionario.Idade"
+    />
   </div>
   <div class="w3-padding">
     <button

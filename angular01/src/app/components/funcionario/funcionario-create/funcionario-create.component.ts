@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Funcionario } from 'src/app/models/funcionario';
 
 @Component({
   selector: 'app-funcionario-create',
@@ -7,12 +8,16 @@ import { Router } from '@angular/router';
   styleUrls: ['./funcionario-create.component.css'],
 })
 export class FuncionarioCreateComponent implements OnInit {
-  constructor(private router: Router) {}
+  Funcionario: Funcionario;
+  constructor(private router: Router) {
+    this.Funcionario = new Funcionario();
+  }
 
   ngOnInit(): void {}
 
   salvar(): void {
     console.log('salvar');
+    console.log(JSON.stringify(this.Funcionario));
   }
 
   goToIndex(): void {
