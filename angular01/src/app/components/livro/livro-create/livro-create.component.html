@@ -1,0 +1,37 @@
+<h1 class="w3-blue">Cadastro de livros</h1>
+<form class="w3-container">
+  <div>
+    <label>Título</label
+    ><input type="text" id="txtTitulo" class="w3-input w3-border w3-round" />
+  </div>
+  <div>
+    <label>Autor</label
+    ><input type="text" id="txtAutor" class="w3-input w3-border w3-round" />
+  </div>
+  <div>
+    <label>Páginas</label
+    ><input
+      type="text"
+      id="txtNumerosPaginas"
+      class="w3-input w3-border w3-round"
+    />
+  </div>
+  <div class="w3-padding">
+    <button
+      id="btnSalvar"
+      type="button"
+      class="w3-btn w3-blue"
+      (click)="salvar()"
+    >
+      Salvar
+    </button>
+    <button
+      id="btnVoltar"
+      type="button"
+      class="w3-btn w3-blue"
+      (click)="goToIndex()"
+    >
+      Voltar
+    </button>
+  </div>
+</form>
