@@ -2,18 +2,32 @@
 <form class="w3-container">
   <div>
     <label>Título</label
-    ><input type="text" id="txtTitulo" class="w3-input w3-border w3-round" />
+    ><input
+      type="text"
+      id="txtTitulo"
+      name="titulo"
+      class="w3-input w3-border w3-round"
+      [(ngModel)]="Livro.Titulo"
+    />
   </div>
   <div>
     <label>Autor</label
-    ><input type="text" id="txtAutor" class="w3-input w3-border w3-round" />
+    ><input
+      type="text"
+      id="txtAutor"
+      name="autor"
+      class="w3-input w3-border w3-round"
+      [(ngModel)]="Livro.Autor"
+    />
   </div>
   <div>
     <label>Páginas</label
     ><input
       type="text"
       id="txtNumerosPaginas"
+      name="numeroDePaginas"
       class="w3-input w3-border w3-round"
+      [(ngModel)]="Livro.NumeroDePaginas"
     />
   </div>
   <div class="w3-padding">
@@ -34,4 +48,5 @@
       Voltar
     </button>
   </div>
+  <!--{{ Livro.Titulo }} INTERPOLAÇÃO-->
 </form>

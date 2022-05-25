@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-livro-index',
-  templateUrl: './livro-index.component.html',
-  styleUrls: ['./livro-index.component.css'],
+  selector: 'app-funcionario-index',
+  templateUrl: './funcionario-index.component.html',
+  styleUrls: ['./funcionario-index.component.css'],
 })
-export class LivroIndexComponent implements OnInit {
+export class FuncionarioIndexComponent implements OnInit {
   constructor(private router: Router) {}
 
   ngOnInit(): void {}
@@ -16,6 +16,6 @@ export class LivroIndexComponent implements OnInit {
   }
 
   goToNovo(): void {
-    this.router.navigate(['/livro-create']);
+    this.router.navigate(['/funcionario-create']);
   }
 }

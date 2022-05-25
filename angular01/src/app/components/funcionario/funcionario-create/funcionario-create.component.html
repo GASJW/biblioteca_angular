@@ -1,0 +1,37 @@
+<h1 class="w3-blue">Cadastro de Funcionários</h1>
+<form class="w3-container">
+  <div>
+    <label>Nome</label
+    ><input type="text" id="txtNome" class="w3-input w3-border w3-round" />
+  </div>
+  <div>
+    <label>Sobrenome</label
+    ><input type="text" id="txtSobrenome" class="w3-input w3-border w3-round" />
+  </div>
+  <div>
+    <label>Cargo</label
+    ><input type="text" id="txtCargo" class="w3-input w3-border w3-round" />
+  </div>
+  <div>
+    <label>Idade</label
+    ><input type="text" id="txtIdade" class="w3-input w3-border w3-round" />
+  </div>
+  <div class="w3-padding">
+    <button
+      id="btnSalvar"
+      type="button"
+      class="w3-btn w3-blue"
+      (click)="salvar()"
+    >
+      Salvar
+    </button>
+    <button
+      id="btnVoltar"
+      type="button"
+      class="w3-btn w3-blue"
+      (click)="goToIndex()"
+    >
+      Voltar
+    </button>
+  </div>
+</form>
