@@ -4,6 +4,7 @@ import { FuncionarioCreateComponent } from './components/funcionario/funcionario
 import { FuncionarioIndexComponent } from './components/funcionario/funcionario-index/funcionario-index.component';
 import { LivroCreateComponent } from './components/livro/livro-create/livro-create.component';
 import { LivroIndexComponent } from './components/livro/livro-index/livro-index.component';
+import { MenuComponent } from './components/menu/menu.component';
 
 const routes: Routes = [
   {
