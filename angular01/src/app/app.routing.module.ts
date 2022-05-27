@@ -1,8 +1,20 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { MenuComponent } from './components/menu/menu.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {
+    path: 'livros',
+    loadChildren: () =>
+      import('./components/livro/livro.module').then((lm) => lm.LivroModule),
+  },
+  {
+    path: 'funcionarios',
+    loadChildren: () =>
+      import('./components/funcionario/funcionario.module').then(
+        (fu) => fu.FuncionarioModule
+      ),
+  },
+];
 
 @NgModule({
   declarations: [],

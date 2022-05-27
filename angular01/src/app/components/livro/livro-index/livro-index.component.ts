@@ -16,6 +16,6 @@ export class LivroIndexComponent implements OnInit {
   }
 
   goToNovo(): void {
-    this.router.navigate(['/livro-create']);
+    this.router.navigate(['/livros/livro-create']);
   }
 }

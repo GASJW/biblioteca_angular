@@ -21,6 +21,6 @@ export class FuncionarioCreateComponent implements OnInit {
   }
 
   goToIndex(): void {
-    this.router.navigate(['/funcionario-index']);
+    this.router.navigate(['/funcionarios/funcionario-index']);
   }
 }

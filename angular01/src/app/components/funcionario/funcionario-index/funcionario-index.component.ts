@@ -16,6 +16,6 @@ export class FuncionarioIndexComponent implements OnInit {
   }
 
   goToNovo(): void {
-    this.router.navigate(['/funcionario-create']);
+    this.router.navigate(['/funcionarios/funcionario-create']);
   }
 }

@@ -27,6 +27,6 @@ export class LivroCreateComponent implements OnInit {
   }
 
   goToIndex(): void {
-    this.router.navigate(['/livro-index']);
+    this.router.navigate(['/livros/livro-index']);
   }
 }

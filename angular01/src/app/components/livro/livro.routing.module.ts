@@ -5,6 +5,7 @@ import { LivroCreateComponent } from './livro-create/livro-create.component';
 import { LivroIndexComponent } from './livro-index/livro-index.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: 'livro-index' },
   {
     path: 'livro-index',
     component: LivroIndexComponent,

@@ -4,6 +4,7 @@ import { FuncionarioCreateComponent } from './funcionario-create/funcionario-cre
 import { FuncionarioIndexComponent } from './funcionario-index/funcionario-index.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: 'funcionario-index' },
   {
     path: 'funcionario-index',
     component: FuncionarioIndexComponent,
