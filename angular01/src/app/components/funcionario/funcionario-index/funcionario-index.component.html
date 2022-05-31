@@ -13,4 +13,25 @@
     Novo
   </button>
 </form>
-<table id="tbFuncionarios" class="w3-table-all"></table>
+<table id="tbFuncionarios" class="w3-table-all">
+  <tr class="w3-blue">
+    <th class="w3-center">Id</th>
+    <th class="w3-center">Nome</th>
+    <th class="w3-center">Sobrenome</th>
+    <th class="w3-center">Cargo</th>
+    <th class="w3-center">Idade</th>
+    <th class="w3-center"></th>
+  </tr>
+  <tr *ngFor="let funcionario of Funcionarios">
+    <td class="w3-center">
+      <a routerLink="/funcionarios/funcionario-edit/{{ funcionario.Id }}">{{
+        funcionario.Id
+      }}</a>
+    </td>
+    <td class="w3-center">{{ funcionario.Nome }}</td>
+    <td class="w3-center">{{ funcionario.Sobrenome }}</td>
+    <td class="w3-center">{{ funcionario.Cargo }}</td>
+    <td class="w3-center">{{ funcionario.Idade }}</td>
+    <td>Excluir</td>
+  </tr>
+</table>

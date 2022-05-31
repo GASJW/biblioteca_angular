@@ -14,4 +14,9 @@ export class FuncionarioService {
     const uri: string = 'https://localhost:44393/api/funcionarios';
     return this.httpClient.post<Funcionario>(uri, funcionario);
   }
+
+  get(): Observable<Funcionario[]> {
+    const uri: string = 'https://localhost:44393/api/funcionarios';
+    return this.httpClient.get<Funcionario[]>(uri);
+  }
 }
