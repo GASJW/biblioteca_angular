@@ -14,6 +14,10 @@ const routes: Routes = [
         (fu) => fu.FuncionarioModule
       ),
   },
+  /*{
+    path: "**"
+    
+  },*/
 ];
 
 @NgModule({
