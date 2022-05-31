@@ -1,0 +1,12 @@
+/*<nav class="w3-bar w3-black">
+  <ul>
+    <li class="w3-bar-item w3-button"><a href="index.html">Home</a></li>
+    <li class="w3-bar-item w3-button">
+      <a routerLink="/livros">Livros</a>
+    </li>
+    <li class="w3-bar-item w3-button">
+      <a routerLink="/funcionarios">Funcionários</a>
+    </li>
+  </ul>
+</nav>
+*/

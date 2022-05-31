@@ -1,4 +1,5 @@
 export class Funcionario {
+  Id!: number;
   Nome: string;
   Sobrenome: string;
   Cargo: string;

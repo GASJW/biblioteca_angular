@@ -14,10 +14,15 @@ const routes: Routes = [
         (fu) => fu.FuncionarioModule
       ),
   },
-  /*{
-    path: "**"
-    
-  },*/
+  {
+    path: 'menu',
+    loadChildren: () =>
+      import('./components/menu/menu.module').then((me) => me.MenuModule),
+  },
+  {
+    path: '**',
+    redirectTo: 'livros',
+  },
 ];
 
 @NgModule({

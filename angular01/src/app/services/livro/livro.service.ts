@@ -13,4 +13,14 @@ export class LivroService {
     const uri: string = 'https://localhost:44393/api/livros';
     return this.httpClient.post<Livro>(uri, livro);
   }
+
+  get(): Observable<Livro[]> {
+    const uri: string = 'https://localhost:44393/api/livros';
+    return this.httpClient.get<Livro[]>(uri);
+  }
+
+  /*getId(Id): Observable<Livro> {
+    const uri: string = 'https://localhost:44393/api/livros';
+    return this.httpClient.get<Livro>(uri, Id);
+  }*/
 }

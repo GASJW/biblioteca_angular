@@ -4,18 +4,30 @@
   <button
     id="btnPesquisar"
     type="button"
-    class="w3-btn w3-blue"
+    class="shadowbutton"
     (click)="pesquisar()"
   >
     Pesquisar
   </button>
-  <button
-    id="btnNovo"
-    type="button"
-    class="w3-btn w3-blue"
-    (click)="goToNovo()"
-  >
+  <button id="btnNovo" type="button" class="shadowbutton" (click)="goToNovo()">
     Novo
   </button>
 </form>
-<table id="tbLivros" class="w3-table-all"></table>
+<table id="tbLivros" class="w3-table-all">
+  <tr class="w3-blue">
+    <th class="w3-center">Id</th>
+    <th class="w3-center">Título</th>
+    <th class="w3-center">Autor</th>
+    <th class="w3-center">Páginas</th>
+    <th class="w3-center"></th>
+  </tr>
+  <tr *ngFor="let livro of Livros">
+    <td class="w3-center">
+      <a routerLink="/livros/livro-edit/{{ livro.Id }}">{{ livro.Id }}</a>
+    </td>
+    <td class="w3-center">{{ livro.Titulo }}</td>
+    <td class="w3-center">{{ livro.Autor }}</td>
+    <td class="w3-center">{{ livro.NumeroDePaginas }}</td>
+    <td>Excluir</td>
+  </tr>
+</table>

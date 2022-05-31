@@ -1,11 +1,18 @@
-<nav class="w3-bar w3-black">
-  <ul>
-    <li class="w3-bar-item w3-button"><a href="index.html">Home</a></li>
-    <li class="w3-bar-item w3-button">
-      <a routerLink="/livros">Livros</a>
-    </li>
-    <li class="w3-bar-item w3-button">
-      <a routerLink="/funcionarios">Funcionários</a>
-    </li>
-  </ul>
+<nav>
+  <link rel="stylesheet" href="menu.component.css" />
+
+  <div class="dropdown">
+    <span class="label">Menu</span>
+    <ul class="items">
+      <li>
+        <a routerLink="/menu">Home</a>
+      </li>
+      <li>
+        <a routerLink="/livros">Livros</a>
+      </li>
+      <li>
+        <a routerLink="/funcionarios">Funcionários</a>
+      </li>
+    </ul>
+  </div>
 </nav>
