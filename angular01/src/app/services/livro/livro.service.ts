@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Observable, Observer } from 'rxjs';
 import { Livro } from 'src/app/models/livro';
 
@@ -14,13 +15,18 @@ export class LivroService {
     return this.httpClient.post<Livro>(uri, livro);
   }
 
+  put(Id: number, livro: Livro): Observable<Livro> {
+    const uri: string = 'https://localhost:44393/api/livros/';
+    return this.httpClient.put<Livro>(uri, Id);
+  }
+
   get(): Observable<Livro[]> {
     const uri: string = 'https://localhost:44393/api/livros';
     return this.httpClient.get<Livro[]>(uri);
   }
 
-  /*getId(Id): Observable<Livro> {
+  getId(Id: number): Observable<Livro> {
     const uri: string = 'https://localhost:44393/api/livros';
-    return this.httpClient.get<Livro>(uri, Id);
-  }*/
+    return this.httpClient.get<Livro>(uri + '/' + Id);
+  }
 }
