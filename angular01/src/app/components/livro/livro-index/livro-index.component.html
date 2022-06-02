@@ -28,6 +28,6 @@
     <td class="w3-center">{{ livro.Titulo }}</td>
     <td class="w3-center">{{ livro.Autor }}</td>
     <td class="w3-center">{{ livro.NumeroDePaginas }}</td>
-    <td>Excluir</td>
+    <td><a (click)="confirmarExclusao(livro.Id)">Excluir</a></td>
   </tr>
 </table>

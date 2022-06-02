@@ -53,6 +53,23 @@ export class LivroIndexComponent implements OnInit {
       });
   }
 
+  confirmarExclusao(id: number): void {
+    if (confirm(`Deseja excluir o livro ${id}?`)) {
+      this.excluir(id);
+      alert('Livro removido com sucesso!');
+      this.pesquisarTodos();
+    }
+  }
+
+  excluir(Id: number): void {
+    this.livroService
+      .delete(Id)
+      .pipe(take(1))
+      .subscribe((livro) => {
+        this.Livro = livro;
+      });
+  }
+
   goToNovo(): void {
     this.router.navigate(['/livros/livro-create']);
   }

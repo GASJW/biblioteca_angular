@@ -15,9 +15,14 @@ export class LivroService {
     return this.httpClient.post<Livro>(uri, livro);
   }
 
-  put(Id: number, livro: Livro): Observable<Livro> {
+  /*put(Id: number, livro: Livro): Observable<Livro> {
     const uri: string = 'https://localhost:44393/api/livros/';
     return this.httpClient.put<Livro>(uri, Id);
+  }*/
+
+  delete(Id: number): Observable<Livro> {
+    const uri: string = 'https://localhost:44393/api/livros';
+    return this.httpClient.delete<Livro>(uri + '/' + Id);
   }
 
   get(): Observable<Livro[]> {

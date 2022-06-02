@@ -35,6 +35,7 @@ export class LivroCreateComponent implements OnInit {
         //console.log(JSON.stringify(this.Livro));
         //console.log('salvar-chegou');
       });
+    this.goToIndex();
 
     //console.log(JSON.stringify(this.Livro));
     //console.log('salvar-end');
