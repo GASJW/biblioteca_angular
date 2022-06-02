@@ -15,14 +15,14 @@ export class LivroService {
     return this.httpClient.post<Livro>(uri, livro);
   }
 
-  /*put(Id: number, livro: Livro): Observable<Livro> {
-    const uri: string = 'https://localhost:44393/api/livros/';
-    return this.httpClient.put<Livro>(uri, Id);
-  }*/
+  put(Id: number, livro: Livro): Observable<Livro> {
+    const uri: string = `https://localhost:44393/api/livros/${Id}`;
+    return this.httpClient.put<Livro>(uri, livro);
+  }
 
   delete(Id: number): Observable<Livro> {
-    const uri: string = 'https://localhost:44393/api/livros';
-    return this.httpClient.delete<Livro>(uri + '/' + Id);
+    const uri: string = `https://localhost:44393/api/livros/${Id}`;
+    return this.httpClient.delete<Livro>(uri);
   }
 
   get(): Observable<Livro[]> {
@@ -31,7 +31,7 @@ export class LivroService {
   }
 
   getId(Id: number): Observable<Livro> {
-    const uri: string = 'https://localhost:44393/api/livros';
-    return this.httpClient.get<Livro>(uri + '/' + Id);
+    const uri: string = `https://localhost:44393/api/livros/${Id}`;
+    return this.httpClient.get<Livro>(uri);
   }
 }
