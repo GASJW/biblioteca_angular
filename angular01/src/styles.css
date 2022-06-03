@@ -969,5 +969,10 @@ input:checked ~ .fancycheckbox {
 .w3-pale-red,
 .w3-hover-pale-red:hover {
   color: #000 !important;
-  background-color: #d76f6f !important;
+  background-color: #ffdddd !important;
+}
+.w3-red,
+.w3-hover-red:hover {
+  color: #fff !important;
+  background-color: #f44336 !important;
 }
