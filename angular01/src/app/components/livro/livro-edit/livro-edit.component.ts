@@ -1,9 +1,13 @@
+import { HttpErrorResponse } from '@angular/common/http';
+import { ThisReceiver } from '@angular/compiler';
 import { Component, EventEmitter, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { take } from 'rxjs';
 import { Livro } from 'src/app/models/livro';
 import { LivroService } from 'src/app/services/livro/livro.service';
+import { MensagemService } from 'src/app/services/mensagem/mensagem.service';
+import { LivroMensagens } from '../livro-mensagens';
 
 @Component({
   selector: 'app-livro-edit',
@@ -16,7 +20,8 @@ export class LivroEditComponent implements OnInit {
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private livroService: LivroService
+    private livroService: LivroService,
+    private mensagemService: MensagemService
   ) {
     this.Id = Number(this.activatedRoute.snapshot.paramMap.get('id'));
     this.Livro = new Livro();
@@ -27,15 +32,13 @@ export class LivroEditComponent implements OnInit {
     this.get(this.Id);
   }
 
-  alterar(): void {
-    console.log(`get=>${this.Id}`);
+  update(): void {
     this.livroService
       .put(this.Id, this.Livro)
       .pipe(take(1))
-      .subscribe(() => {
-        console.log('Livro alterado');
-        alert('Livro alterado com sucesso!');
-        this.goToIndex();
+      .subscribe({
+        next: (livro) => this.handleResponseUpdate(livro),
+        error: (error) => this.handleRespondeError(error),
       });
   }
 
@@ -48,9 +51,37 @@ export class LivroEditComponent implements OnInit {
     this.livroService
       .getId(Id)
       .pipe(take(1))
-      .subscribe((livro) => {
-        this.Livro = livro;
-        console.log(this.Livro.Id);
+      .subscribe({
+        next: (livro) => {
+          this.handleResponseGet(livro);
+        },
+        error: (error) => this.handleRespondeError(error),
       });
+  }
+
+  handleResponseGet(livro: Livro): void {
+    this.Livro = livro;
+  }
+
+  handleResponseUpdate(livro: Livro): void {
+    this.handleResponseGet(livro);
+    this.showMessageOk();
+    this.goToIndex();
+  }
+
+  handleRespondeError(error: HttpErrorResponse): void {
+    if (error.status === 0) {
+      this.mensagemService.set(error.message);
+    } else if (error.status === 500) {
+      this.mensagemService.set(LivroMensagens.EditErrorInternalServerErrorPtBr);
+    } else if (error.status === 400) {
+      this.mensagemService.set(LivroMensagens.EditErrorBadRequestPtBt);
+    } else {
+      throw -1;
+    }
+  }
+
+  showMessageOk(): void {
+    this.mensagemService.set(LivroMensagens.EditOkPtBr);
   }
 }
