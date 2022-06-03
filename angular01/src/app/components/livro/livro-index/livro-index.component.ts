@@ -88,7 +88,7 @@ export class LivroIndexComponent implements OnInit {
     this.router.navigate(['/livros/livro-create']);
   }
 
-  manageError(error: number): void {
+  manageError(error: number): string {
     let descriptionError = '';
     switch (error) {
       case 1040:
@@ -110,7 +110,7 @@ export class LivroIndexComponent implements OnInit {
         descriptionError = `ERRO DESCONHECIDO: ${error}`;
         break;
     }
-    alert(descriptionError);
+    return descriptionError;
   }
 
   manageResponse(response: HttpErrorResponse): void {

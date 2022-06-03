@@ -1,8 +1,11 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { take } from 'rxjs';
 import { Livro } from 'src/app/models/livro';
 import { LivroService } from 'src/app/services/livro/livro.service';
+import { MensagemService } from 'src/app/services/mensagem/mensagem.service';
+import { LivroMensagens } from '../livro-mensagens';
 //import { Livro } from '../../../livro';
 
 @Component({
@@ -13,7 +16,11 @@ import { LivroService } from 'src/app/services/livro/livro.service';
 export class LivroCreateComponent implements OnInit {
   Livro: Livro;
 
-  constructor(private router: Router, private livroService: LivroService) {
+  constructor(
+    private router: Router,
+    private livroService: LivroService,
+    private mensagemService: MensagemService
+  ) {
     this.Livro = new Livro();
   }
 
@@ -23,22 +30,40 @@ export class LivroCreateComponent implements OnInit {
     //this.numeroDePaginas = this.numeroDePaginas;
   }
 
-  salvar(): void {
-    //console.log('salvar-begin');
-
+  save(): void {
     this.livroService
       .post(this.Livro)
       .pipe(take(1))
-      .subscribe((livro) => {
-        this.Livro = livro;
-        alert('Livro inserido com sucesso.');
-        //console.log(JSON.stringify(this.Livro));
-        //console.log('salvar-chegou');
+      .subscribe({
+        next: (livro) => {
+          this.handleResponseOK(livro);
+        },
+        error: (error) => this.handleRespondeError(error),
       });
-    this.goToIndex();
+  }
 
-    //console.log(JSON.stringify(this.Livro));
-    //console.log('salvar-end');
+  handleResponseOK(livro: Livro): void {
+    this.Livro = livro;
+    this.showMessageOk();
+    this.goToIndex();
+  }
+
+  handleRespondeError(error: HttpErrorResponse): void {
+    if (error.status === 0) {
+      this.mensagemService.set(error.message);
+    } else if (error.status === 500) {
+      this.mensagemService.set(
+        LivroMensagens.CreateErrorInternalServerErrorPtBr
+      );
+    } else if (error.status === 400) {
+      this.mensagemService.set(LivroMensagens.CreateErrorBadRequestPtBr);
+    } else {
+      throw -1;
+    }
+  }
+
+  showMessageOk(): void {
+    this.mensagemService.set(LivroMensagens.CreateOKPtBr);
   }
 
   goToIndex(): void {
