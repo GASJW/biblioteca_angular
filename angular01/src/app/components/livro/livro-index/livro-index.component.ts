@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { take } from 'rxjs';
 import { Livro } from 'src/app/models/livro';
 import { LivroService } from 'src/app/services/livro/livro.service';
+import { MensagemService } from 'src/app/services/mensagem/mensagem.service';
+import { LivroMensagens } from '../livro-mensagens';
 
 @Component({
   selector: 'app-livro-index',
@@ -14,7 +16,11 @@ export class LivroIndexComponent implements OnInit {
   SearchId: string;
   Livros: Livro[];
 
-  constructor(private router: Router, private livroService: LivroService) {
+  constructor(
+    private router: Router,
+    private livroService: LivroService,
+    private mensagemService: MensagemService
+  ) {
     this.Livros = new Array<Livro>();
     this.SearchId = '';
   }
@@ -35,10 +41,10 @@ export class LivroIndexComponent implements OnInit {
       .pipe(take(1))
       .subscribe({
         next: (livros) => {
-          this.Livros = livros;
+          this.getLivros(livros);
         },
         error: (error) => {
-          this.manageResponse(error);
+          this.handleRespondeError(error);
         },
       });
   }
@@ -53,9 +59,13 @@ export class LivroIndexComponent implements OnInit {
           this.Livros.push(livro);
         },
         error: (error) => {
-          this.manageResponse(error);
+          this.handleRespondeErrorGetId(error);
         },
       });
+  }
+
+  getLivros(livros: Array<Livro>): void {
+    this.Livros = livros;
   }
 
   confirmDelete(id: number): void {
@@ -70,59 +80,43 @@ export class LivroIndexComponent implements OnInit {
       .pipe(take(1))
       .subscribe({
         error: (error) => {
-          this.manageResponse(error);
+          this.handleRespondeError(error);
+          this.clearInput();
+          this.search();
         },
         complete: () => {
-          this.onComplete();
+          this.handleComplete();
         },
       });
   }
 
-  onComplete(): void {
-    alert('Livro removido com sucesso!');
-    this.SearchId = '';
+  handleComplete(): void {
+    this.mensagemService.set(LivroMensagens.DeleteOkPtBr);
+    this.clearInput();
     this.search();
   }
 
+  clearInput(): void {
+    this.SearchId = '';
+  }
+
   goToCreate(): void {
-    this.router.navigate(['/livros/livro-create']);
+    this.router.navigate(['/livros/livro-create-reactive']);
   }
 
-  manageError(error: number): string {
-    let descriptionError = '';
-    switch (error) {
-      case 1040:
-        descriptionError = 'NÃO ENCONTRADO';
-        break;
-      case 1004:
-        descriptionError = 'NÃO EXISTEM DADOS PARA EXIBIR';
-        break;
-      case 5000:
-        descriptionError = 'ERRO INTERNO NO SERVIDOR';
-        break;
-      case 4000:
-        descriptionError = 'REQUISIÇÃO DE ENTRADA INVÁLIDA';
-        break;
-      case -1:
-        descriptionError = 'ERRO DESCONHECIDO';
-        break;
-      default:
-        descriptionError = `ERRO DESCONHECIDO: ${error}`;
-        break;
+  handleRespondeErrorGetId(error: HttpErrorResponse): void {
+    if (error.status === 404) {
+      this.mensagemService.set(LivroMensagens.GetIdErrorNotFoundPtBr);
     }
-    return descriptionError;
   }
 
-  manageResponse(response: HttpErrorResponse): void {
-    if (response.status === 200) {
-      this.manageError(response.status);
-      this.search();
-    } else if (response.status === 404) {
-      this.manageError(1040);
-    } else if (response.status === 500) {
-      this.manageError(5000);
-    } else if (response.status === 400) {
-      this.manageError(4000);
+  handleRespondeError(error: HttpErrorResponse): void {
+    if (error.status === 0) {
+      this.mensagemService.set(error.message);
+    } else if (error.status === 404) {
+      this.mensagemService.set(LivroMensagens.GetIdErrorNotFoundPtBr);
+    } else if (error.status === 400) {
+      this.mensagemService.set(LivroMensagens.EditErrorBadRequestPtBt);
     } else {
       throw -1;
     }

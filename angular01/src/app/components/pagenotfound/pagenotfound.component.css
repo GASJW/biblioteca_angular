@@ -1,0 +1,11 @@
+.error-body {
+  background-color: rgb(247, 79, 70);
+  text-align: center;
+}
+.error-body:hover {
+  background-color: rgb(217, 40, 16);
+  color: white;
+}
+.footer {
+  text-align: center;
+}

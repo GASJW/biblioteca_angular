@@ -53,20 +53,20 @@ export class LivroEditComponent implements OnInit {
       .pipe(take(1))
       .subscribe({
         next: (livro) => {
-          this.handleResponseGet(livro);
+          this.getLivro(livro);
         },
         error: (error) => this.handleRespondeError(error),
       });
   }
 
-  handleResponseGet(livro: Livro): void {
-    this.Livro = livro;
-  }
-
   handleResponseUpdate(livro: Livro): void {
-    this.handleResponseGet(livro);
+    this.getLivro(livro);
     this.showMessageOk();
     this.goToIndex();
+  }
+
+  getLivro(livro: Livro): void {
+    this.Livro = livro;
   }
 
   handleRespondeError(error: HttpErrorResponse): void {

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { LivroCreateReactiveComponent } from './livro-create-reactive/livro-create-reactive.component';
 
 import { LivroCreateComponent } from './livro-create/livro-create.component';
 import { LivroEditComponent } from './livro-edit/livro-edit.component';
@@ -18,6 +19,10 @@ const routes: Routes = [
   {
     path: 'livro-edit/:id',
     component: LivroEditComponent,
+  },
+  {
+    path: 'livro-create-reactive',
+    component: LivroCreateReactiveComponent,
   },
 ];
 

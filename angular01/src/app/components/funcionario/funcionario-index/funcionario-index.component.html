@@ -1,15 +1,21 @@
 <h1 class="w3-blue">Lista de Funcionários</h1>
 <form class="w3-margin">
-  <label>Id</label><input type="text" id="txtId" />
+  <label>Id</label
+  ><input type="text" name="SearchId" id="txtSearchId" [(ngModel)]="SearchId" />
   <button
     id="btnPesquisar"
     type="button"
     class="shadowbutton"
-    (click)="pesquisar()"
+    (click)="search()"
   >
     Pesquisar
   </button>
-  <button id="btnNovo" type="button" class="shadowbutton" (click)="goToNovo()">
+  <button
+    id="btnNovo"
+    type="button"
+    class="shadowbutton"
+    (click)="goToCreate()"
+  >
     Novo
   </button>
 </form>
@@ -32,6 +38,8 @@
     <td class="w3-center">{{ funcionario.Sobrenome }}</td>
     <td class="w3-center">{{ funcionario.Cargo }}</td>
     <td class="w3-center">{{ funcionario.Idade }}</td>
-    <td>Excluir</td>
+    <td>
+      <a (click)="confirmDelete(funcionario.Id)" class="w3-button">Excluir</a>
+    </td>
   </tr>
 </table>

@@ -5,4 +5,7 @@ export enum LivroMensagens {
   EditOkPtBr = 'Livro Alterado com sucesso.',
   EditErrorBadRequestPtBt = 'Algum dado do livro não foi enviado ou está incorreto. Verifique os dados inseridos!',
   EditErrorInternalServerErrorPtBr = 'Acesso ao servidor não disponível. Entre em contato com a equipe de suporte!',
+  GetIdErrorNotFoundPtBr = 'Livro não encontrado.',
+  GetErrorNotFoundPtBr = 'Não existem livros cadastrados.',
+  DeleteOkPtBr = 'Livro removido com sucesso.',
 }

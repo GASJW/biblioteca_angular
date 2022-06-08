@@ -1,0 +1,46 @@
+<h1 class="w3-blue">Cadastro de Livros</h1>
+<form class="w3-container" [formGroup]="Formulario">
+  <div>
+    <label>Título</label
+    ><input
+      type="text"
+      formControlName="titulo"
+      class="w3-input w3-border w3-round"
+    />
+  </div>
+  <div>
+    <label>Autor</label
+    ><input
+      type="text"
+      formControlName="autor"
+      class="w3-input w3-border w3-round"
+    />
+  </div>
+  <div>
+    <label>Páginas</label
+    ><input
+      type="text"
+      formControlName="numeroDePaginas"
+      class="w3-input w3-border w3-round"
+    />
+  </div>
+  <div class="w3-padding">
+    <button
+      id="btnSalvar"
+      type="button"
+      class="shadowbutton"
+      (click)="create()"
+    >
+      Salvar
+    </button>
+    <button
+      id="btnVoltar"
+      type="button"
+      class="shadowbutton"
+      (click)="goToIndex()"
+    >
+      Voltar
+    </button>
+  </div>
+  <!--{{ Livro.Titulo }} INTERPOLAÇÃO-->
+</form>
